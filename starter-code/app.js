@@ -8,16 +8,16 @@ Write a function called sum() that takes in two numbers as arguments and then re
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testSum() function below and check the console to see if the test passes.*/
 
 // Write your code here
-function sum(a, b, c) {
+function sum(a, b) {
   //eslint-disable-line
-  var theSum = a + b + c;
+  var theSum = a + b;
   var theString = `The sum of ${a} and ${b} is ${theSum}.`;
   // console.log(theSum, theString);
   return [theSum, theString];
 }
 
 // Here is the test for sum(); uncomment it to run it
-// testSum(4, 7);
+testSum(4, 7);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -30,16 +30,16 @@ Write a function called multiply() that takes in two numbers as arguments and re
 Test this function by hand in the console to get it working, and when you think it is finished, uncomment the call for the testMultiply() function and see if the test passes.*/
 
 // Write your code here
-function multiply(a, b, c) {
+function multiply(a, b) {
   //eslint-disable-line
-  var ans = a * b * c;
+  var ans = a * b;
   var str = `The product of ${a} and ${b} is ${ans}.`;
   // console.log(ans, str);
   return [ans, str];
 }
 
 // Here is the test for multiply(); uncomment it to run it
-// testMultiply(5, 9);
+testMultiply(5, 9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -57,21 +57,22 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function sumAndMultiply(a, b, c) {
   //eslint-disable-line
-  var sumNums = sum(a, b, c)[0];
+  var sumNums = sum(a, b)[0];
   // console.log(sumNums);
+  var newSumNums = sum(sumNums, c)[0];
 
-  var productNums = multiply(a, b, c)[0];
+  var productNums = multiply(a, b)[0];
   // console.log(productNums);
-
-  var sumStr = `${a} and ${b} and ${c} sum to ${sumNums}.`;
+  var newProductNums = multiply(productNums, c)[0];
+  var sumStr = `${a} and ${b} and ${c} sum to ${newSumNums}.`;
   // console.log(sumStr);
-  var productStr = `The product of ${a} and ${b} and ${c} is ${productNums}.`;
+  var productStr = `The product of ${a} and ${b} and ${c} is ${newProductNums}.`;
   // console.log(productStr);
-  return [sumNums, productNums, sumStr, productStr];
+  return [newSumNums, newProductNums, sumStr, productStr];
 }
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
-// testSumAndMultiply(4, 7, 5);
+testSumAndMultiply(4, 7, 5);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -90,17 +91,18 @@ var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) {
   //eslint-disable-line
-  var sumArr = sum(testArray[0], testArray[1], testArray[2])[0];
+  var sumArr = sum(testArray[0], testArray[1])[0];
+  var newSumArr = sum(sumArr, testArray[2])[0];
   // console.log(sumArr);
   var sumArrStr = `${testArray[0]},${testArray[1]},${testArray[2]} was passed in as an array of numbers, and 9 is their sum.`;
   // console.log(sumArrStr);
 
-  return [sumArr, sumArrStr];
+  return [newSumArr, sumArrStr];
 }
 
 // Here is the test for sumArray(); uncomment it to run it
 
-//testSumArray(testArray);
+testSumArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -117,12 +119,13 @@ Test this function by hand in the console to get it working, and when you think 
 // Write your code here
 function multiplyArray(multArr) {
   //eslint-disable-line
-  var productArr = multiply(testArray[0], testArray[1], testArray[2])[0];
+  var productArr = multiply(testArray[0], testArray[1])[0];
+  var newProductArr = multiply(productArr, testArray[2])[0];
   // console.log(sumArr);
   var productArrStr = `The numbers ${testArray[0]},${testArray[1]},${testArray[2]} have a product of 24.`;
   // console.log(sumArrStr);
 
-  return [productArr, productArrStr];
+  return [newProductArr, productArrStr];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
